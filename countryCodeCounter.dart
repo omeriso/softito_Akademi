@@ -8,8 +8,8 @@ void main(List<String> arguments) {
     "+48 63733556"
   ];
 
-  int sayac = getCountryPhoneCount("49", phonesList);
-  print(sayac);
+  int exampleCounter = getCountryPhoneCount("49", phonesList);
+  print(exampleCounter);
 }
 
 

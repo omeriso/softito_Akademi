@@ -1,83 +1,231 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_design/dropdownButton.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          // Row(
-          //   children: _row(),
-          // ),
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: _row(),
-          // ),
-          // Wrap(
-          //   children: [..._row(), ..._row()],
-          // ),
-          // SizedBox(
-          //   height: 50,
-          //   width: MediaQuery.of(context).size.width,
-          //   child: ListView(
-          //     scrollDirection: Axis.horizontal,
-          //     children: [..._row(), ..._row()],
-          //   ),
-          // ),
-          // SingleChildScrollView(
-          //     scrollDirection: Axis.horizontal,
-          //     child: Row(children: [..._row(), ..._row(), ..._row()])),
-          // Divider(),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                ..._row(),
-                ..._row(),
-                ..._row(),
-                ..._row(),
-                ..._row(),
-                ..._row(),
-                ..._row(),
-                ..._row(),
-              ],
-            ),
-          )
-        ],
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Habits"),
+          backgroundColor: Colors.grey,
+          actions: [
+            DropDown(),
+            IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.history)),
+            PopupMenuButton(
+                itemBuilder: (BuildContext context) =>
+                    <PopupMenuEntry<Settings>>[
+                      PopupMenuItem(
+                          onTap: () {
+                            print(Settings.Configure);
+                          },
+                          child: Text("Configure "),
+                          value: Settings.Configure),
+                      PopupMenuItem(
+                        child: Text("Specify"),
+                        value: Settings.Specify,
+                      ),
+                      PopupMenuItem(
+                        child: Text("Hide"),
+                        value: Settings.Hide,
+                      )
+                    ])
+          ],
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(200, 20, 0, 0),
+                child: SizedBox(
+                  width: 400,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 0),
+                        child: Text(
+                          "Thu",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Text(
+                          "Fri",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Text(
+                          "Sat",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Text(
+                          "Sun",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                child: SizedBox(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      Icon(Icons.circle),
+                      SizedBox(
+                        width: 100,
+                        child: Text(
+                          "    wake up early",
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 60),
+                        child: SizedBox(
+                          width: 200,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 45,
+                                height: 20,
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.check,
+                                      size: 20,
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 45,
+                                height: 20,
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.check,
+                                      size: 20,
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 45,
+                                height: 20,
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.check,
+                                      size: 20,
+                                    )),
+                              ),
+                              SizedBox(
+                                width: 45,
+                                height: 20,
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Icon(
+                                      Icons.check,
+                                      size: 20,
+                                    )),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                child: SizedBox(
+                  height: 30,
+                  child: Row(
+                    children: [
+                      Icon(Icons.circle),
+                      SizedBox(
+                        child: SizedBox(
+                          width: 100,
+                          child: Text(
+                            "    breakfast",
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 60),
+                          child: SizedBox(
+                            width: 200,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 45,
+                                  height: 20,
+                                  child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 20,
+                                      )),
+                                ),
+                                SizedBox(
+                                  width: 45,
+                                  height: 20,
+                                  child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 20,
+                                      )),
+                                ),
+                                SizedBox(
+                                  width: 45,
+                                  height: 20,
+                                  child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 20,
+                                      )),
+                                ),
+                                SizedBox(
+                                  width: 45,
+                                  height: 20,
+                                  child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 20,
+                                      )),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
-
-  List<Widget> _row() {
-    return [
-      _Container(20, 30, Colors.red),
-      _Container(10, 20, Colors.blue),
-      _Container(40, 15, Colors.orange),
-      _Container(25, 30, Colors.purple),
-      _Container(50, 25, Colors.pink),
-      _Container(10, 15, Colors.yellow),
-      _Container(30, 25, Colors.amber),
-      _Container(10, 15, Colors.yellow),
-      _Container(25, 30, Colors.purple),
-      _Container(40, 20, Colors.blue),
-      _Container(40, 15, Colors.orange),
-    ];
-  }
-
-  _Container(
-    double width,
-    double height,
-    Color color,
-  ) =>
-      Container(
-        width: width,
-        height: height,
-        color: color,
-      );
 }
+
+enum Settings { Configure, Specify, Hide }
